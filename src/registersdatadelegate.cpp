@@ -46,7 +46,7 @@ QWidget *RegistersDataDelegate::createEditor(QWidget *parent,
     }
     else if (m_frmt == EUtils::Float) {//Float
             QLineEdit *editor = new QLineEdit(parent);
-            QRegExp rx("^[-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?$");
+            QRegularExpression rx("^[-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?$");
             QValidator *validator = new QRegularExpressionValidator(rx);
             editor->setValidator(validator);
             return editor;
