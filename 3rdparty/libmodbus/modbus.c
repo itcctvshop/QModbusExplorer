@@ -22,6 +22,8 @@
 
 #include "modbus.h"
 #include "modbus-private.h"
+void busMonitorRawRequestData(uint8_t *msg, int msg_length) {}
+void busMonitorRawResponseData(uint8_t *msg, int msg_length) {}
 
 /* Internal use */
 #define MSG_LENGTH_UNDEFINED -1
