@@ -6,6 +6,7 @@
 #include "busmonitor.h"
 #include "ui_busmonitor.h"
 #include "./src/rawdatadelegate.h"
+#include <QRegularExpression> // chatGPT help
 
 
 BusMonitor::BusMonitor(QWidget *parent, RawDataModel *rawDataModel) :
@@ -198,7 +199,7 @@ QModelIndex prev;
 void BusMonitor::parseTxMsg(QString msg, QPlainTextEdit* txtADU)
 {
     txtADU->setPlainText("Type : Tx Message");
-    QStringList row = msg.split(QRegExp("\\s+"));
+    QStringList row = msg.split(QRegularExpression("\\s+"));
         txtADU->appendPlainText("Timestamp : " + row[2]);
         if (msg.indexOf("RTU") > -1){//RTU message
             QStringList pdu;
@@ -268,7 +269,7 @@ void BusMonitor::parseTxPDU(QStringList pdu, QString slave, QPlainTextEdit* txtA
 void BusMonitor::parseRxMsg(QString msg, QPlainTextEdit* txtADU)
 {
     txtADU->setPlainText("Type : Rx Message");
-    QStringList row = msg.split(QRegExp("\\s+"));
+    QStringList row = msg.split(QRegularExpression("\\s+"));
     txtADU->appendPlainText("Timestamp : " + row[2]);
     if (msg.indexOf("RTU") > -1){//RTU message
         QStringList pdu;
@@ -353,7 +354,7 @@ void BusMonitor::parseRxPDU(QStringList pdu, QString slave, QPlainTextEdit* txtA
 void BusMonitor::parseSysMsg(QString msg, QPlainTextEdit* txtADU)
 {
     txtADU->setPlainText("Type : System Message");
-    QStringList row = msg.split(QRegExp("\\s+"));
+    QStringList row = msg.split(QRegularExpression("\\s+"));
     txtADU->appendPlainText("Timestamp : " + row[2]);
     txtADU->appendPlainText("Message" + msg.mid(msg.indexOf(" : ")));
 }
