@@ -66,7 +66,9 @@ void BusMonitor::save()
 
     //iterate
     for (int i = 0; i < sl.size(); ++i)
-              ts << sl.at(i) << endl;
+            //  ts << sl.at(i) << endl;
+        ts << sl.at(i) << '\n'; // Chat GTP
+        ts.flush();// ChatGPT
 
     //Close File
     file.close();
