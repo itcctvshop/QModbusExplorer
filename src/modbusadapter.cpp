@@ -565,16 +565,26 @@ void ModbusAdapter::setReadOutputsBeforeWrite(bool readOutputsBeforeWrite){
 }
 
 
+//extern "C" {
+
+//void busMonitorRawResponseData(uint8_t * data, int dataLen)
+//{
+//        m_instance->busMonitorResponseData(data, dataLen);
+//}
+
+//void busMonitorRawRequestData(uint8_t * data, int dataLen)
+//{
+ //       m_instance->busMonitorRequestData(data, dataLen);
+//}
+#ifdef __cplusplus
 extern "C" {
+#endif
 
-void busMonitorRawResponseData(uint8_t * data, int dataLen)
-{
-        m_instance->busMonitorResponseData(data, dataLen);
-}
+void busMonitorRawRequestData(uint8_t *msg, int msg_length);
+void busMonitorRawResponseData(uint8_t *msg, int msg_length);
 
-void busMonitorRawRequestData(uint8_t * data, int dataLen)
-{
-        m_instance->busMonitorRequestData(data, dataLen);
+#ifdef __cplusplus
 }
+#endif
 
 }
