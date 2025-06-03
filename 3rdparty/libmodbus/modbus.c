@@ -25,6 +25,7 @@
 
 /* Internal use */
 #define MSG_LENGTH_UNDEFINED -1
+#define HAVE_STRLCPY
 
 /* Exported version */
 const unsigned int libmodbus_version_major = LIBMODBUS_VERSION_MAJOR;
