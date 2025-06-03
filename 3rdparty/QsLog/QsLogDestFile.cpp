@@ -146,7 +146,8 @@ void QsLogging::FileDestination::write(const QString& message, Level)
     }
 
    // mOutputStream << message << endl;
-    mOutputStream << message << std::endl;// By ChatGPT
+   // mOutputStream << message << std::endl;// By ChatGPT
+     mOutputStream << message << '\n';// By ChatGPT again
     mOutputStream.flush();
 }
 
