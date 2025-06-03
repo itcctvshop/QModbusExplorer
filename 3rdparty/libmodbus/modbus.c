@@ -25,7 +25,6 @@
 
 /* Internal use */
 #define MSG_LENGTH_UNDEFINED -1
-#define HAVE_STRLCPY
 
 /* Exported version */
 const unsigned int libmodbus_version_major = LIBMODBUS_VERSION_MAJOR;
@@ -1827,7 +1826,7 @@ void modbus_mapping_free(modbus_mapping_t *mb_mapping)
     free(mb_mapping->tab_bits);
     free(mb_mapping);
 }
-
+#define HAVE_STRLCPY
 #ifndef HAVE_STRLCPY
 /*
  * Function strlcpy was originally developed by
