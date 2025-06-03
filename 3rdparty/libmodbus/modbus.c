@@ -22,8 +22,12 @@
 
 #include "modbus.h"
 #include "modbus-private.h"
-void busMonitorRawRequestData(uint8_t *msg, int msg_length) {}
-void busMonitorRawResponseData(uint8_t *msg, int msg_length) {}
+//void busMonitorRawRequestData(uint8_t *msg, int msg_length) {}
+//void busMonitorRawResponseData(uint8_t *msg, int msg_length) {}
+
+// ✅ เปลี่ยนชื่อใหม่ใน modbus.c
+void dummyRawRequestData(uint8_t *msg, int msg_length) {}
+void dummyRawResponseData(uint8_t *msg, int msg_length) {}
 
 /* Internal use */
 #define MSG_LENGTH_UNDEFINED -1
@@ -179,7 +183,8 @@ static int send_msg(modbus_t *ctx, uint8_t *msg, int msg_length)
     }
 
 	//***Not part of libmodbus - added for QModMaster***//
-    busMonitorRawRequestData(msg,msg_length);
+   // busMonitorRawRequestData(msg,msg_length);
+	dummyRawRequestData(msg,msg_length);
     
 	/* In recovery mode, the write command will be issued until to be
        successful! Disabled by default. */
@@ -474,7 +479,8 @@ int _modbus_receive_msg(modbus_t *ctx, uint8_t *msg, msg_type_t msg_type)
         printf("\n");
 
 	//***Not part of libmodbus - added for QModMaster***//
-    busMonitorRawResponseData(msg, msg_length);
+    //busMonitorRawResponseData(msg, msg_length);
+	dummyRawResponseData(msg, msg_length);
 
     return ctx->backend->check_integrity(ctx, msg, msg_length);
 }
